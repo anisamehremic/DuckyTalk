@@ -20,6 +20,7 @@ namespace DuckyTalk.Database
         public virtual DbSet<Technology> Technologies { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserTechnology> UserTechnologies { get; set; }
+        public virtual DbSet<Interest> Interests { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -49,8 +50,6 @@ namespace DuckyTalk.Database
                 entity.Property(e => e.Email).HasMaxLength(50);
 
                 entity.Property(e => e.FirstName).HasMaxLength(50);
-
-                entity.Property(e => e.LastLoginAt).HasColumnType("datetime");
 
                 entity.Property(e => e.LastName).HasMaxLength(50);
 

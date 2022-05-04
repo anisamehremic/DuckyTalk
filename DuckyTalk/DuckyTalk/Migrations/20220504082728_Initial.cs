@@ -8,6 +8,20 @@ namespace DuckyTalk.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Interests",
+                columns: table => new
+                {
+                    InterestId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Interests", x => x.InterestId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Technologies",
                 columns: table => new
                 {
@@ -32,11 +46,11 @@ namespace DuckyTalk.Migrations
                     LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Username = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     BirthDate = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Photo = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PasswordHash = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    PasswordSalt = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    LastLoginAt = table.Column<DateTime>(type: "datetime", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: true)
+                    PasswordSalt = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -60,12 +74,15 @@ namespace DuckyTalk.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "UserId", "BirthDate", "Email", "FirstName", "IsDeleted", "LastLoginAt", "LastName", "PasswordHash", "PasswordSalt", "Username" },
-                values: new object[] { 1, new DateTime(1998, 11, 4, 14, 28, 58, 693, DateTimeKind.Local), "anisa.mehremic@edu.fit.ba", "Anisa", null, null, "Mehremic", "+WQk9mVupe+VOTeMI1a8PsyMmR0=", "cPYUsauMRpahKHypOM3BIA==", "anisam" });
+                columns: new[] { "UserId", "BirthDate", "Email", "FirstName", "Gender", "LastName", "PasswordHash", "PasswordSalt", "Photo", "Username" },
+                values: new object[] { 1, new DateTime(1998, 11, 4, 14, 28, 58, 693, DateTimeKind.Local), "anisa.mehremic@edu.fit.ba", "Anisa", null, "Mehremic", "+WQk9mVupe+VOTeMI1a8PsyMmR0=", "cPYUsauMRpahKHypOM3BIA==", null, "anisam" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Interests");
+
             migrationBuilder.DropTable(
                 name: "Technologies");
 
