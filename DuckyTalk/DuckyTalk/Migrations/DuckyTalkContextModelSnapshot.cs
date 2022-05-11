@@ -38,6 +38,24 @@ namespace DuckyTalk.Migrations
                     b.ToTable("Interests");
                 });
 
+            modelBuilder.Entity("DuckyTalk.Database.Message", b =>
+                {
+                    b.Property<int>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("MessageText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TechnologyId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MessageId");
+
+                    b.ToTable("Messages");
+                });
+
             modelBuilder.Entity("DuckyTalk.Database.Technology", b =>
                 {
                     b.Property<int>("TechnologyId")
@@ -118,6 +136,48 @@ namespace DuckyTalk.Migrations
                             PasswordSalt = "cPYUsauMRpahKHypOM3BIA==",
                             Username = "anisam"
                         });
+                });
+
+            modelBuilder.Entity("DuckyTalk.Database.UserInterest", b =>
+                {
+                    b.Property<int>("UserInterestId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("InterestId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserInterestId");
+
+                    b.ToTable("UserInterests");
+                });
+
+            modelBuilder.Entity("DuckyTalk.Database.UserMessage", b =>
+                {
+                    b.Property<int>("UserMessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("MessageId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("TimeShowed")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserMessageId");
+
+                    b.ToTable("UserMessages");
                 });
 
             modelBuilder.Entity("DuckyTalk.Database.UserTechnology", b =>
