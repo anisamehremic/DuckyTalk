@@ -21,6 +21,9 @@ namespace DuckyTalk.Database
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserTechnology> UserTechnologies { get; set; }
         public virtual DbSet<Interest> Interests { get; set; }
+        public virtual DbSet<UserInterest> UserInterests { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
+        public virtual DbSet<UserMessage> UserMessages { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

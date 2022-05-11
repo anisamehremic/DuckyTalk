@@ -4,10 +4,8 @@ using System.Text;
 
 namespace DuckyTalk.Model.SearchRequests
 {
-    public class UserSearchRequest
+    public class InterestSearchRequest
     {
-        public string FirstName { get; set; }
-        public string Username { get; set; }
-
+        public string Name { get; set; }
     }
 }

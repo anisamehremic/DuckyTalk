@@ -22,6 +22,20 @@ namespace DuckyTalk.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Messages",
+                columns: table => new
+                {
+                    MessageId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MessageText = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TechnologyId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Messages", x => x.MessageId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Technologies",
                 columns: table => new
                 {
@@ -34,6 +48,36 @@ namespace DuckyTalk.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Technologies", x => x.TechnologyId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserInterests",
+                columns: table => new
+                {
+                    UserInterestId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    InterestId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserInterests", x => x.UserInterestId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserMessages",
+                columns: table => new
+                {
+                    UserMessageId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    MessageId = table.Column<int>(type: "int", nullable: false),
+                    TimeShowed = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserMessages", x => x.UserMessageId);
                 });
 
             migrationBuilder.CreateTable(
@@ -84,7 +128,16 @@ namespace DuckyTalk.Migrations
                 name: "Interests");
 
             migrationBuilder.DropTable(
+                name: "Messages");
+
+            migrationBuilder.DropTable(
                 name: "Technologies");
+
+            migrationBuilder.DropTable(
+                name: "UserInterests");
+
+            migrationBuilder.DropTable(
+                name: "UserMessages");
 
             migrationBuilder.DropTable(
                 name: "Users");
