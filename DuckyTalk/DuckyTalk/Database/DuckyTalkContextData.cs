@@ -19,7 +19,7 @@ namespace DuckyTalk.Database
                 PasswordHash = "+WQk9mVupe+VOTeMI1a8PsyMmR0=",//anisa123
                 PasswordSalt = "cPYUsauMRpahKHypOM3BIA==",
             });
-            modelBuilder.Entity<Message>().HasData(Helpers.LoadingDataHelper.LoadJsonFromFile<Message>("MessagesJson.json"));
+            //modelBuilder.Entity<Message>().HasData(Helpers.LoadingDataHelper.LoadJsonFromFile<Message>("MessagesJson.json"));
         }
         
     }
