@@ -75,28 +75,6 @@ namespace DuckyTalk.Migrations
                     b.HasIndex("TechnologyId");
 
                     b.ToTable("Messages");
-
-                    b.HasData(
-                        new
-                        {
-                            MessageId = 1,
-                            TechnologyId = 0
-                        },
-                        new
-                        {
-                            MessageId = 2,
-                            TechnologyId = 0
-                        },
-                        new
-                        {
-                            MessageId = 3,
-                            TechnologyId = 0
-                        },
-                        new
-                        {
-                            MessageId = 4,
-                            TechnologyId = 0
-                        });
                 });
 
             modelBuilder.Entity("DuckyTalk.Database.Technology", b =>

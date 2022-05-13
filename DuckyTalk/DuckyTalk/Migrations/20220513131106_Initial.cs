@@ -192,17 +192,6 @@ namespace DuckyTalk.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Messages",
-                columns: new[] { "MessageId", "Keywords", "MessageText", "TechnologyId" },
-                values: new object[,]
-                {
-                    { 1, null, null, 0 },
-                    { 2, null, null, 0 },
-                    { 3, null, null, 0 },
-                    { 4, null, null, 0 }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Technologies",
                 columns: new[] { "TechnologyId", "Description", "IsDeleted", "Keywords", "Name" },
                 values: new object[,]

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuckyTalk.Migrations
 {
     [DbContext(typeof(DuckyTalkContext))]
-    [Migration("20220513123234_Initial")]
+    [Migration("20220513131106_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -77,28 +77,6 @@ namespace DuckyTalk.Migrations
                     b.HasIndex("TechnologyId");
 
                     b.ToTable("Messages");
-
-                    b.HasData(
-                        new
-                        {
-                            MessageId = 1,
-                            TechnologyId = 0
-                        },
-                        new
-                        {
-                            MessageId = 2,
-                            TechnologyId = 0
-                        },
-                        new
-                        {
-                            MessageId = 3,
-                            TechnologyId = 0
-                        },
-                        new
-                        {
-                            MessageId = 4,
-                            TechnologyId = 0
-                        });
                 });
 
             modelBuilder.Entity("DuckyTalk.Database.Technology", b =>

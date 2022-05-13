@@ -1,22 +1,26 @@
 ﻿[
   {
     "messageId": 1,
-    "content": "Hi",
+    "messageText": "Hi",
+    "keywords": "Hi",
     "tehnologyId": 1
   },
   {
     "messageId": 2,
-    "content": "What's upp'",
+    "messageText": "What's upp",
+    "keywords": "Hi",
     "tehnologyId": 1
   },
   {
     "messageId": 3,
-    "content": "What's the problem?",
+    "messageText": "What's the problem?",
+    "keywords": "Hi",
     "tehnologyId": 1
   },
   {
     "messageId": 4,
-    "content": "If you made a Java program to tell you your purpose, it would keep saying ''Null point exception''.",
+    "messageText": "If you made a Java program to tell you your purpose, it would keep saying ''Null point exception''.",
+    "keywords": "Hi",
     "tehnologyId": 3
   },
 ]
