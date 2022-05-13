@@ -46,15 +46,7 @@ namespace DuckyTalk.Database
                 entity.Property(e => e.Name).HasMaxLength(100);
             });
 
-            modelBuilder.Entity<Message>(entity =>
-            {
-                entity.HasOne(d => d.Technology)
-                    .WithMany(p => p.Messages)
-                    .HasForeignKey(d => d.TechnologyId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Messages__Techno__2B3F6F97");
-            });
-
+       
             modelBuilder.Entity<Technology>(entity =>
             {
                 entity.Property(e => e.Description).HasMaxLength(200);
@@ -95,6 +87,14 @@ namespace DuckyTalk.Database
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__UserBreak__UserI__3C69FB99");
             });
+            modelBuilder.Entity<Message>(entity =>
+            {
+                entity.HasOne(d => d.Technology)
+                    .WithMany(p => p.Messages)
+                    .HasForeignKey(d => d.TechnologyId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Messages__Techno__2B3F6F97");
+            });
 
             modelBuilder.Entity<UserInterest>(entity =>
             {
@@ -115,7 +115,7 @@ namespace DuckyTalk.Database
 
             modelBuilder.Entity<UserMessage>(entity =>
             {
-                entity.Property(e => e.dateTime).HasColumnType("datetime");
+                entity.Property(e => e.DateTime).HasColumnType("datetime");
 
                 entity.ToTable("UserMessage");
 
