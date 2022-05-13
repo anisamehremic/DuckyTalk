@@ -121,7 +121,7 @@ namespace DuckyTalk.Database
             });  
            
 
-            modelBuilder.Entity<Message>().HasData(Helpers.LoadingDataHelper.LoadJsonFromFile<Message>("MessagesJson.json"));
+            //modelBuilder.Entity<Message>().HasData(Helpers.LoadingDataHelper.LoadJsonFromFile<Message>("MessagesJson.json"));
         }
         
     }
