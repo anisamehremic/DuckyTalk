@@ -9,8 +9,6 @@ namespace DuckyTalk.Model
         public int MessageId { get; set; }
         public string Keywords { get; set; }
         public string MessageText { get; set; }
-        public string Keywords { get; set; }
-
         public string TechnologyId { get; set; }
     }
 }

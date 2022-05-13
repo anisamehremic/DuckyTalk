@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuckyTalk.Migrations
 {
     [DbContext(typeof(DuckyTalkContext))]
-    [Migration("20220513131106_Initial")]
+    [Migration("20220513145705_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
