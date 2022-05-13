@@ -17,8 +17,9 @@ namespace DuckyTalk
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-            using (var scope = host.Services.CreateScope()) {
-               var service = scope.ServiceProvider.GetRequiredService<DuckyTalkContext>();
+            using (var scope = host.Services.CreateScope())
+            {
+                var service = scope.ServiceProvider.GetRequiredService<DuckyTalkContext>();
                 service.Database.Migrate();
             }
             host.Run();

@@ -10,6 +10,9 @@ namespace DuckyTalk.Model.UpsertRequests
         [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
         public string Description { get; set; }
+        [Required(AllowEmptyStrings = false)]
+        public string Keywords { get; set; }
+
         public bool? IsDeleted { get; set; }
     }
 }

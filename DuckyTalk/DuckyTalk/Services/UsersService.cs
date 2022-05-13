@@ -11,7 +11,7 @@ using DuckyTalk.Filters;
 
 namespace DuckyTalk.Services
 {
-    public class UsersService:IUsersService
+    public class UsersService : IUsersService
     {
         public DuckyTalkContext Context { get; set; }
         protected readonly IMapper Mapper;
@@ -30,7 +30,7 @@ namespace DuckyTalk.Services
                 //throw new UserException("Pogrešan username ili password");
             }
 
-            var hash =CrypthographyHelper.GenerateHash(entity.PasswordSalt, password);
+            var hash = CrypthographyHelper.GenerateHash(entity.PasswordSalt, password);
 
             if (hash != entity.PasswordHash)
             {

@@ -9,6 +9,9 @@ namespace DuckyTalk.Model.UpsertRequests
     {
         [Required(AllowEmptyStrings = false)]
         public string MessageText { get; set; }
+        [Required(AllowEmptyStrings = false)]
+        public string Keywords { get; set; }
+
         public string TechnologyId { get; set; }
     }
 }

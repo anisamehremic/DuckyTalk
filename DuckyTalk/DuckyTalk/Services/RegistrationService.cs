@@ -9,9 +9,9 @@ using System.Linq;
 
 namespace DuckyTalk.Services
 {
-    public class RegistrationService: CRUDService<Database.User, Model.User, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, IRegistrationService
+    public class RegistrationService : CRUDService<Database.User, Model.User, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, IRegistrationService
     {
-        public RegistrationService(DuckyTalkContext context, IMapper mapper): base (context, mapper)
+        public RegistrationService(DuckyTalkContext context, IMapper mapper) : base(context, mapper)
         {
 
         }
@@ -31,7 +31,8 @@ namespace DuckyTalk.Services
 
             return Mapper.Map<Model.User>(entity);
         }
-        public override IEnumerable<Model.User> Get(UserSearchRequest search = null) {
+        public override IEnumerable<Model.User> Get(UserSearchRequest search = null)
+        {
 
             var query = Context.Users.AsQueryable();
 

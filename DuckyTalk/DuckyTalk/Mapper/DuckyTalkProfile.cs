@@ -2,7 +2,7 @@
 
 namespace DuckyTalk.Mapper
 {
-    public class DuckyTalkProfile:Profile
+    public class DuckyTalkProfile : Profile
     {
         public DuckyTalkProfile()
         {
