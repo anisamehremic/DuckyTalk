@@ -13,6 +13,7 @@ namespace DuckyTalk.Mapper
             CreateMap<Database.Message, Model.Message>().ReverseMap();
             CreateMap<Database.UserMessage, Model.UserMessage>().ReverseMap();
             CreateMap<Database.UserInterest, Model.UserInterest>().ReverseMap();
+            CreateMap<Database.UserBreakReminder, Model.UserBreakReminder>().ReverseMap();
             CreateMap<Model.UpsertRequests.UserUpsertRequest, Database.User>().ReverseMap();
             CreateMap<Model.UpsertRequests.TechnologyUpsertRequest, Database.Technology>().ReverseMap();
             CreateMap<Model.UpsertRequests.UserTechnologyUpsertRequest, Database.UserTechnology>().ReverseMap();
@@ -20,6 +21,7 @@ namespace DuckyTalk.Mapper
             CreateMap<Model.UpsertRequests.MessageUpsertRequest, Database.Message>().ReverseMap();
             CreateMap<Model.UpsertRequests.UserMessageUpsertRequest, Database.UserMessage>().ReverseMap();
             CreateMap<Model.UpsertRequests.UserInterestUpsertRequest, Database.UserInterest>().ReverseMap();
+            CreateMap<Model.UpsertRequests.UserBreakReminderUpsertRequests, Database.UserBreakReminder>().ReverseMap();
 
         }
     }

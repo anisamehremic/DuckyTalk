@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuckyTalk.Migrations
 {
     [DbContext(typeof(DuckyTalkContext))]
-    [Migration("20220511175314_Initial")]
-    partial class Initial
+    [Migration("20220513140255_Initialize")]
+    partial class Initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,6 +38,20 @@ namespace DuckyTalk.Migrations
                     b.HasKey("InterestId");
 
                     b.ToTable("Interests");
+
+                    b.HasData(
+                        new
+                        {
+                            InterestId = 1,
+                            Description = "Rock music",
+                            Name = "Music"
+                        },
+                        new
+                        {
+                            InterestId = 2,
+                            Description = "Comedy",
+                            Name = "Movies"
+                        });
                 });
 
             modelBuilder.Entity("DuckyTalk.Database.Message", b =>
@@ -80,6 +94,29 @@ namespace DuckyTalk.Migrations
                     b.HasKey("TechnologyId");
 
                     b.ToTable("Technologies");
+
+                    b.HasData(
+                        new
+                        {
+                            TechnologyId = 1,
+                            Description = "",
+                            IsDeleted = false,
+                            Name = "NaN"
+                        },
+                        new
+                        {
+                            TechnologyId = 2,
+                            Description = "SQL is a standard language for accessing and manipulating databases.",
+                            IsDeleted = false,
+                            Name = "SQL"
+                        },
+                        new
+                        {
+                            TechnologyId = 3,
+                            Description = "Java is an object-oriented programming language that produces software for multiple platforms.",
+                            IsDeleted = false,
+                            Name = "Java"
+                        });
                 });
 
             modelBuilder.Entity("DuckyTalk.Database.User", b =>
@@ -137,7 +174,39 @@ namespace DuckyTalk.Migrations
                             PasswordHash = "+WQk9mVupe+VOTeMI1a8PsyMmR0=",
                             PasswordSalt = "cPYUsauMRpahKHypOM3BIA==",
                             Username = "anisam"
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            BirthDate = new DateTime(1998, 12, 21, 11, 55, 58, 693, DateTimeKind.Local),
+                            Email = "lejla.mujakic@edu.fit.ba",
+                            FirstName = "Lejla",
+                            LastName = "Mujakic",
+                            PasswordHash = "+WQk9mVupe+VOTeMI1a8PsyMmR0=",
+                            PasswordSalt = "cPYUsauMRpahKHypOM3BIA==",
+                            Username = "lejlam"
                         });
+                });
+
+            modelBuilder.Entity("DuckyTalk.Database.UserBreakReminder", b =>
+                {
+                    b.Property<int>("UserBreakReminderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserBreakReminderId");
+
+                    b.ToTable("UserBreakReminders");
                 });
 
             modelBuilder.Entity("DuckyTalk.Database.UserInterest", b =>
@@ -147,8 +216,8 @@ namespace DuckyTalk.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("InterestId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("InterestId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -159,6 +228,29 @@ namespace DuckyTalk.Migrations
                     b.HasKey("UserInterestId");
 
                     b.ToTable("UserInterests");
+
+                    b.HasData(
+                        new
+                        {
+                            UserInterestId = 1,
+                            InterestId = 1,
+                            IsActive = false,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            UserInterestId = 2,
+                            InterestId = 1,
+                            IsActive = true,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            UserInterestId = 3,
+                            InterestId = 2,
+                            IsActive = true,
+                            UserId = 1
+                        });
                 });
 
             modelBuilder.Entity("DuckyTalk.Database.UserMessage", b =>
@@ -180,6 +272,22 @@ namespace DuckyTalk.Migrations
                     b.HasKey("UserMessageId");
 
                     b.ToTable("UserMessages");
+
+                    b.HasData(
+                        new
+                        {
+                            UserMessageId = 1,
+                            MessageId = 1,
+                            TimeShowed = new DateTime(2022, 5, 12, 14, 28, 58, 693, DateTimeKind.Local),
+                            UserId = 1
+                        },
+                        new
+                        {
+                            UserMessageId = 2,
+                            MessageId = 2,
+                            TimeShowed = new DateTime(2022, 5, 12, 15, 28, 58, 693, DateTimeKind.Local),
+                            UserId = 2
+                        });
                 });
 
             modelBuilder.Entity("DuckyTalk.Database.UserTechnology", b =>
@@ -201,6 +309,29 @@ namespace DuckyTalk.Migrations
                     b.HasKey("UserTechnologyId");
 
                     b.ToTable("UserTechnologies");
+
+                    b.HasData(
+                        new
+                        {
+                            UserTechnologyId = 1,
+                            IsDeleted = false,
+                            TechnologyId = 1,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            UserTechnologyId = 2,
+                            IsDeleted = false,
+                            TechnologyId = 1,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            UserTechnologyId = 3,
+                            IsDeleted = false,
+                            TechnologyId = 2,
+                            UserId = 1
+                        });
                 });
 #pragma warning restore 612, 618
         }
