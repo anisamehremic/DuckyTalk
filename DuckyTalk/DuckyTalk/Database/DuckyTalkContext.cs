@@ -115,6 +115,8 @@ namespace DuckyTalk.Database
 
             modelBuilder.Entity<UserMessage>(entity =>
             {
+                entity.Property(e => e.dateTime).HasColumnType("datetime");
+
                 entity.ToTable("UserMessage");
 
                 entity.HasOne(d => d.Message)

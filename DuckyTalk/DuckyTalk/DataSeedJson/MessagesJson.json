@@ -1,10 +1,23 @@
 ﻿[
   {
     "messageId": 1,
-    "content": "content",
+    "content": "Hi",
     "tehnologyId": 1
   },
-  {},
-  {},
+  {
+    "messageId": 2,
+    "content": "What's upp'",
+    "tehnologyId": 1
+  },
+  {
+    "messageId": 3,
+    "content": "What's the problem?",
+    "tehnologyId": 1
+  },
+  {
+    "messageId": 4,
+    "content": "If you made a Java program to tell you your purpose, it would keep saying ''Null point exception''.",
+    "tehnologyId": 3
+  },
   //add data after adding table
 ]

@@ -27,14 +27,14 @@ namespace DuckyTalk.Services
 
             if (entity == null)
             {
-                //throw new UserException("Pogrešan username ili password");
+                throw new UserException("Pogrešan username ili password");
             }
 
             var hash = CrypthographyHelper.GenerateHash(entity.PasswordSalt, password);
 
             if (hash != entity.PasswordHash)
             {
-                //throw new UserException("Pogrešan username ili password");
+                throw new UserException("Pogrešan username ili password");
             }
 
             return Mapper.Map<Model.User>(entity);
