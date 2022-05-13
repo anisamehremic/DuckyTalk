@@ -9,6 +9,7 @@ namespace DuckyTalk.Model
         public int TechnologyId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string Keywords { get; set; }
         public bool? IsDeleted { get; set; }
     }
 }

@@ -10,6 +10,10 @@ namespace DuckyTalk.Database
         public int UserMessageId { get; set; }
         public int UserId { get; set; }
         public int MessageId { get; set; }
-        public DateTime TimeShowed { get; set; }
+        public DateTime DateTime { get; set; }
+        public bool IsDeleted { get; set; }
+
+        public virtual Message Message { get; set; }
+        public virtual User User { get; set; }
     }
 }

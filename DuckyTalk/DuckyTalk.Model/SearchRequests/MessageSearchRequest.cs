@@ -6,7 +6,7 @@ namespace DuckyTalk.Model.SearchRequests
 {
     public class MessageSearchRequest
     {
-        public string TechnologyId { get; set; }
-        public string Keywords { get; set; }
+        public int UserId { get; set; }
+        public string Content { get; set; }
     }
 }

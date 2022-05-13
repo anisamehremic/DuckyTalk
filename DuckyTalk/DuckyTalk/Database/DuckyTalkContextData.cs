@@ -84,44 +84,9 @@ namespace DuckyTalk.Database
                 TechnologyId = 2,
                 IsDeleted=false,
             });   
-            modelBuilder.Entity<UserInterest>().HasData(new DuckyTalk.Database.UserInterest()
-            {
-                UserInterestId = 1,
-                UserId = 1,
-                InterestId = 1,
-                IsActive = false,
-            });     
-            modelBuilder.Entity<UserInterest>().HasData(new DuckyTalk.Database.UserInterest()
-            {
-                UserInterestId = 2,
-                UserId = 2,
-                InterestId = 1,
-                IsActive = true,
-            });     
-            modelBuilder.Entity<UserInterest>().HasData(new DuckyTalk.Database.UserInterest()
-            {
-                UserInterestId = 3,
-                UserId = 1,
-                InterestId = 2,
-                IsActive = true,
-            });    
-            modelBuilder.Entity<UserMessage>().HasData(new DuckyTalk.Database.UserMessage()
-            {
-                UserMessageId = 1,
-                UserId = 1,
-                MessageId = 1,
-                TimeShowed = new DateTime(2022, 5, 12, 14, 28, 58, 693, DateTimeKind.Local),
-            });    
-            modelBuilder.Entity<UserMessage>().HasData(new DuckyTalk.Database.UserMessage()
-            {
-                UserMessageId = 2,
-                UserId = 2,
-                MessageId = 2,
-                TimeShowed = new DateTime(2022, 5, 12, 15, 28, 58, 693, DateTimeKind.Local),
-            });  
-           
 
-            //modelBuilder.Entity<Message>().HasData(Helpers.LoadingDataHelper.LoadJsonFromFile<Message>("MessagesJson.json"));
+
+            modelBuilder.Entity<Message>().HasData(Helpers.LoadingDataHelper.LoadJsonFromFile<Message>("MessagesJson.json"));
         }
         
     }

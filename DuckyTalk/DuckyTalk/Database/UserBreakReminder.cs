@@ -9,7 +9,9 @@ namespace DuckyTalk.Database
     {
         public int UserBreakReminderId { get; set; }
         public int UserId { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public DateTime? StartTime { get; set; }
+        public DateTime? EndTime { get; set; }
+
+        public virtual User User { get; set; }
     }
 }

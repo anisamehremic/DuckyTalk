@@ -28,10 +28,12 @@ namespace DuckyTalk.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("InterestId");
 
@@ -59,13 +61,18 @@ namespace DuckyTalk.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Keywords")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("MessageText")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TechnologyId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("TechnologyId")
+                        .HasColumnType("int");
 
                     b.HasKey("MessageId");
+
+                    b.HasIndex("TechnologyId");
 
                     b.ToTable("Messages");
                 });
@@ -81,11 +88,13 @@ namespace DuckyTalk.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<bool?>("IsDeleted")
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Keywords")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -124,7 +133,7 @@ namespace DuckyTalk.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("BirthDate")
+                    b.Property<DateTime?>("BirthDate")
                         .HasColumnType("datetime");
 
                     b.Property<string>("Email")
@@ -136,7 +145,8 @@ namespace DuckyTalk.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("LastName")
                         .HasMaxLength(50)
@@ -193,18 +203,20 @@ namespace DuckyTalk.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("EndTime")
+                        .HasColumnType("datetime");
 
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("StartTime")
+                        .HasColumnType("datetime");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("UserBreakReminderId");
 
-                    b.ToTable("UserBreakReminders");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserBreakReminder");
                 });
 
             modelBuilder.Entity("DuckyTalk.Database.UserInterest", b =>
@@ -217,7 +229,7 @@ namespace DuckyTalk.Migrations
                     b.Property<int>("InterestId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsActive")
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<int>("UserId")
@@ -225,30 +237,11 @@ namespace DuckyTalk.Migrations
 
                     b.HasKey("UserInterestId");
 
-                    b.ToTable("UserInterests");
+                    b.HasIndex("InterestId");
 
-                    b.HasData(
-                        new
-                        {
-                            UserInterestId = 1,
-                            InterestId = 1,
-                            IsActive = false,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            UserInterestId = 2,
-                            InterestId = 1,
-                            IsActive = true,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            UserInterestId = 3,
-                            InterestId = 2,
-                            IsActive = true,
-                            UserId = 1
-                        });
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserInterest");
                 });
 
             modelBuilder.Entity("DuckyTalk.Database.UserMessage", b =>
@@ -258,34 +251,25 @@ namespace DuckyTalk.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<int>("MessageId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("TimeShowed")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("UserMessageId");
 
-                    b.ToTable("UserMessages");
+                    b.HasIndex("MessageId");
 
-                    b.HasData(
-                        new
-                        {
-                            UserMessageId = 1,
-                            MessageId = 1,
-                            TimeShowed = new DateTime(2022, 5, 12, 14, 28, 58, 693, DateTimeKind.Local),
-                            UserId = 1
-                        },
-                        new
-                        {
-                            UserMessageId = 2,
-                            MessageId = 2,
-                            TimeShowed = new DateTime(2022, 5, 12, 15, 28, 58, 693, DateTimeKind.Local),
-                            UserId = 2
-                        });
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserMessage");
                 });
 
             modelBuilder.Entity("DuckyTalk.Database.UserTechnology", b =>
@@ -295,7 +279,7 @@ namespace DuckyTalk.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool?>("IsDeleted")
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<int>("TechnologyId")
@@ -305,6 +289,10 @@ namespace DuckyTalk.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("UserTechnologyId");
+
+                    b.HasIndex("TechnologyId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserTechnologies");
 
@@ -330,6 +318,113 @@ namespace DuckyTalk.Migrations
                             TechnologyId = 2,
                             UserId = 1
                         });
+                });
+
+            modelBuilder.Entity("DuckyTalk.Database.Message", b =>
+                {
+                    b.HasOne("DuckyTalk.Database.Technology", "Technology")
+                        .WithMany("Messages")
+                        .HasForeignKey("TechnologyId")
+                        .HasConstraintName("FK__Messages__Techno__2B3F6F97")
+                        .IsRequired();
+
+                    b.Navigation("Technology");
+                });
+
+            modelBuilder.Entity("DuckyTalk.Database.UserBreakReminder", b =>
+                {
+                    b.HasOne("DuckyTalk.Database.User", "User")
+                        .WithMany("UserBreakReminders")
+                        .HasForeignKey("UserId")
+                        .HasConstraintName("FK__UserBreak__UserI__3C69FB99")
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DuckyTalk.Database.UserInterest", b =>
+                {
+                    b.HasOne("DuckyTalk.Database.Interest", "Interest")
+                        .WithMany("UserInterests")
+                        .HasForeignKey("InterestId")
+                        .HasConstraintName("FK__UserInter__Inter__33D4B598")
+                        .IsRequired();
+
+                    b.HasOne("DuckyTalk.Database.User", "User")
+                        .WithMany("UserInterests")
+                        .HasForeignKey("UserId")
+                        .HasConstraintName("FK__UserInter__UserI__32E0915F")
+                        .IsRequired();
+
+                    b.Navigation("Interest");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DuckyTalk.Database.UserMessage", b =>
+                {
+                    b.HasOne("DuckyTalk.Database.Message", "Message")
+                        .WithMany("UserMessages")
+                        .HasForeignKey("MessageId")
+                        .HasConstraintName("FK__UserMessa__Messa__38996AB5")
+                        .IsRequired();
+
+                    b.HasOne("DuckyTalk.Database.User", "User")
+                        .WithMany("UserMessages")
+                        .HasForeignKey("UserId")
+                        .HasConstraintName("FK__UserMessa__UserI__37A5467C")
+                        .IsRequired();
+
+                    b.Navigation("Message");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DuckyTalk.Database.UserTechnology", b =>
+                {
+                    b.HasOne("DuckyTalk.Database.Technology", "Technology")
+                        .WithMany("UserTechnologies")
+                        .HasForeignKey("TechnologyId")
+                        .HasConstraintName("FK__UserTechn__Techn__2F10007B")
+                        .IsRequired();
+
+                    b.HasOne("DuckyTalk.Database.User", "User")
+                        .WithMany("UserTechnologies")
+                        .HasForeignKey("UserId")
+                        .HasConstraintName("FK__UserTechn__UserI__2E1BDC42")
+                        .IsRequired();
+
+                    b.Navigation("Technology");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DuckyTalk.Database.Interest", b =>
+                {
+                    b.Navigation("UserInterests");
+                });
+
+            modelBuilder.Entity("DuckyTalk.Database.Message", b =>
+                {
+                    b.Navigation("UserMessages");
+                });
+
+            modelBuilder.Entity("DuckyTalk.Database.Technology", b =>
+                {
+                    b.Navigation("Messages");
+
+                    b.Navigation("UserTechnologies");
+                });
+
+            modelBuilder.Entity("DuckyTalk.Database.User", b =>
+                {
+                    b.Navigation("UserBreakReminders");
+
+                    b.Navigation("UserInterests");
+
+                    b.Navigation("UserMessages");
+
+                    b.Navigation("UserTechnologies");
                 });
 #pragma warning restore 612, 618
         }
