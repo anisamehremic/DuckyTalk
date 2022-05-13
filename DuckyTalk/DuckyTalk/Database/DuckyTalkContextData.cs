@@ -47,8 +47,8 @@ namespace DuckyTalk.Database
             modelBuilder.Entity<User>().HasData(new DuckyTalk.Database.Technology()
             {
                 TechnologyId = 3,
-                Name = ".Net",
-                Description = ".NET is a free, cross-platform, open source developer platform for building many different types of applications. The .NET framework can work with several programming languages such as C#, VB.NET, C++ and F#. At Grand Circus, we use C#.",
+                Name = "Java",
+                Description = "Java is an object-oriented programming language that produces software for multiple platforms.",
                 IsDeleted = false,
             });
             modelBuilder.Entity<User>().HasData(new DuckyTalk.Database.Interest()
