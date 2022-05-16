@@ -1,4 +1,5 @@
 ﻿using DuckyTalk.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -18,6 +19,8 @@ namespace DuckyTalk.Controllers
         {
             return _registrationService.Insert(request);   
         }
+
+        [Authorize]
         [HttpGet]
         public IEnumerable<Model.User> Get ([FromQuery]Model.SearchRequests.UserSearchRequest request)
         {

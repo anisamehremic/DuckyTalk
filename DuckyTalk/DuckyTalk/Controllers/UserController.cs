@@ -22,7 +22,7 @@ namespace DuckyTalk.Controllers
         {
             return _service.Get(request);
         }
-
+        
         [HttpGet("{id}")]
         public Model.User GetById(int id)
         {
