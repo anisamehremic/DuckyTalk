@@ -91,6 +91,8 @@ namespace DuckyTalk
 
             app.UseRouting();
 
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
             app.UseAuthentication();
             app.UseAuthorization();
 

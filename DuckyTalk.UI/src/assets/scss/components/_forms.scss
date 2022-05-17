@@ -66,6 +66,12 @@ select {
     .form-control {
       border-color: theme-color(danger);
     }
+  .invalid-feedback{
+      color: #a44e4e;
+  }
+  &.is-invalid{
+      border: 1px solid #a44e4e;
+  }
   }
   .file-upload-default {
     visibility: hidden;

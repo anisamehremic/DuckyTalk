@@ -15,9 +15,9 @@ import {
 export class AppComponent implements OnInit {
   title = 'demo1';
 
-  showSidebar = true;
-  showNavbar = true;
-  showFooter = true;
+  showSidebar = false;
+  showNavbar = false;
+  showFooter = false;
   isLoading = false;
 
   constructor(private router: Router) {
@@ -28,7 +28,8 @@ export class AppComponent implements OnInit {
           event.url === '/user-pages/login' ||
           event.url === '/user-pages/register' ||
           event.url === '/error-pages/404' ||
-          event.url === '/error-pages/500'
+          event.url === '/error-pages/500' ||
+          event.url === '/'
         ) {
           this.showSidebar = false;
           this.showNavbar = false;
@@ -49,7 +50,9 @@ export class AppComponent implements OnInit {
           ) {
             document.querySelector('.content-wrapper').classList.add('p-0');
           }
-        } else {
+        } else if(
+          event.url === '/dashboard'
+        ) {
           this.showSidebar = true;
           this.showNavbar = true;
           this.showFooter = true;
