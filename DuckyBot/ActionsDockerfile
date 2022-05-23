@@ -1,0 +1,43 @@
+# Extend the official Rasa SDK image
+FROM rasa/rasa-sdk:3.1.1
+
+# Use subdirectory as working directory
+WORKDIR /app
+
+# Copy any additional custom requirements, if necessary (uncomment next line)
+# COPY actions/requirements-actions.txt ./
+
+# Change back to root user to install dependencies
+USER root
+
+# Install extra requirements for actions code, if necessary (uncomment next line)
+# RUN pip install -r requirements-actions.txt
+
+RUN apt-get -o Acquire::Max-FutureTime=86400 update && apt-get -o Acquire::Max-FutureTime=86400 install -y \
+	curl apt-transport-https debconf-utils \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get -o Acquire::Max-FutureTime=86400 update
+RUN apt-get -o Acquire::Max-FutureTime=86400 install -y gcc python3-dev python3-pip libxml2-dev libxslt1-dev zlib1g-dev g++ gnupg
+
+# RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+# RUN curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
+
+RUN apt-get -o Acquire::Max-FutureTime=86400 update \
+    && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+    && curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list > /etc/apt/sources.list.d/mssql-release.list \
+    && apt-get -o Acquire::Max-FutureTime=86400 update \
+    && ACCEPT_EULA=Y apt-get -o Acquire::Max-FutureTime=86400 install -y msodbcsql17 \
+    && ACCEPT_EULA=Y apt-get -o Acquire::Max-FutureTime=86400 install -y mssql-tools
+
+RUN apt-get -o Acquire::Max-FutureTime=86400 install -y unixodbc-dev
+# RUN -qq && \
+#     apt-get install -y unixodbc-dev && \
+#     apt-get clean && \
+#     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+
+RUN pip3 install --no-cache-dir pyodbc
+
+# Copy actions folder to working directory
+COPY ./actions /app/actions

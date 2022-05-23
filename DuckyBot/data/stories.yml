@@ -1,0 +1,77 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+
+- story: greet and subscribe
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: registration
+    - action: utter_registration_start
+    - intent: inform_email
+    - action: action_hello_world
+    - action: utter_subscribed
+    - action: utter_interest_java
+    - or:
+      - intent: affirm
+      - intent: deny
+    - action: action_interest_java
+    - action: utter_interest_csharp
+    - or:
+      - intent: affirm
+      - intent: deny
+    - action: action_interest_csharp
+    - action: utter_subscribed_interest
+
+
+- story: dev joke 1
+  steps:
+  - intent: tell_joke
+  - action: utter_joke_what_kind
+  - intent: tell_dev_joke
+  - action: action_tell_dev_joke
+
+- story: dev joke 2
+  steps:
+  - intent: tell_joke
+  - action: utter_joke_what_kind
+  - intent: tell_dad_joke
+  - action: action_tell_dad_joke
+
+- story: dev joke 3
+  steps:
+  - intent: tell_dev_joke
+  - action: action_tell_dev_joke
+
+- story: dev joke 4
+  steps:
+  - intent: tell_dad_joke
+  - action: action_tell_dad_joke

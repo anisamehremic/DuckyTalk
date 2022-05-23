@@ -1,0 +1,115 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - registration
+  - inform_email
+  - tell_joke
+  - tell_dev_joke
+  - tell_dad_joke
+  - tell_joke_what_kind
+  - code_help_start
+
+
+responses:
+  utter_greet:
+  - text: "Hey! What can I do for you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+  
+  utter_registration_start:
+  - text: "Hey, tell me about yourself, like your email!"
+  
+  utter_registration_start_password:
+  - text: "No need to add password, I will mail you one that is super secure retrained"  
+
+  utter_ask_email:
+    - text: What is your email address?
+  utter_ask_frequency:
+    - text: How often do you want to receive emails from me?
+  utter_subscribed:
+    - text: You're all set! Check your inbox at {email} to confirm your subscription.
+  utter_interest_java:
+    - text: Are you interested in Java news?
+  utter_interest_csharp:
+    - text: Are you interested in C# news?
+  utter_subscribed_interest:
+    - text: You're all set! We will send you news based on your interests! 
+            Interest in Java {interest_java}
+            Interest in C# {interest_csharp}
+
+  utter_joke_what_kind:
+    - text: "ok, what kind of joke would you like?"
+
+  utter_joke:
+   - text: Here's something that's popping on my circuits
+
+
+# responses for general chit chat about technology and showing interests
+  
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+# slots:
+#   email:
+#     type: text
+#     influence_conversation: false
+
+
+# forms:
+#   newsletter_form:
+#     email:
+#       - type: from_text
+
+
+actions:
+- action_hello_world
+- utter_ask_email
+- interest_java
+- action_interest_java
+- action_interest_csharp
+- action_tell_dev_joke
+- action_tell_dad_joke
+
+
+# entities:
+# - email
+
+slots:
+  email:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_text
+  interest_csharp:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_text
+  interest_java:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_text
