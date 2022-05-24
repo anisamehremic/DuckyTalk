@@ -51,7 +51,8 @@ export class AppComponent implements OnInit {
             document.querySelector('.content-wrapper').classList.add('p-0');
           }
         } else if(
-          event.url === '/dashboard'
+          event.url === '/dashboard' ||
+          event.url === '/general-pages/main'
         ) {
           this.showSidebar = true;
           this.showNavbar = true;
