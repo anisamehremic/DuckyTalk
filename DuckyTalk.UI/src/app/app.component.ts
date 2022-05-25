@@ -53,11 +53,8 @@ export class AppComponent implements OnInit {
         } else if(
           event.url === '/dashboard' ||
           event.url === '/general-pages/main' ||
-<<<<<<< HEAD
-          event.url === '/general-pages/news-feed'
-=======
+          event.url === '/general-pages/news-feed' ||
           event.url === '/career/main'
->>>>>>> a01c09b6f36a0a24e332b1317cefdc4708a9743f
         ) {
           this.showSidebar = true;
           this.showNavbar = true;
