@@ -29,7 +29,7 @@ import { BasicAuthInterceptor } from './shared/helper/auth.interceptor';
     DashboardComponent,
     TodoListComponent,
     TodoComponent,
-    ContentAnimateDirective
+    ContentAnimateDirective,
   ],
   imports: [
     BrowserModule,

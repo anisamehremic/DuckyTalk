@@ -37,7 +37,8 @@ export class UserService {
 
   public login(user: Auth): any {
     let authData = window.btoa(user.username + ":" + user.password);
-    localStorage.setItem("user", JSON.stringify(user.username));
+    localStorage.setItem("user", JSON.stringify(authData));
+    localStorage.setItem("username", JSON.stringify(user.username))
     this.userSubject.next(authData);
     this.getUsers();
   }

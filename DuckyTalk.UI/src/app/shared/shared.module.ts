@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SliceWordsPipe } from './helper/slice-words.pipe';
 
 
 
 @NgModule({
-  declarations: [SpinnerComponent],
+  declarations: [SpinnerComponent, SliceWordsPipe],
   imports: [
     CommonModule
   ],
-  exports: [SpinnerComponent]
+  exports: [SpinnerComponent, SliceWordsPipe]
 })
 export class SharedModule { }
