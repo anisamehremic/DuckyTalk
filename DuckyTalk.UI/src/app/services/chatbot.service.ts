@@ -6,6 +6,7 @@ import { Message } from '../shared/models/message.model';
 import { ResponseTextBot } from '../shared/models/responseTextBot.model';
 import { UserService } from './user.service';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -50,10 +51,12 @@ export class ChatbotService {
       message: msg
     }
     try {
-      let response = this.http.post<ResponseTextBot>(`${environment.botURL}/webhooks/rest/webhook`, body).subscribe(data => {
-        this.messageResponse = data.text;
-        return data;
-    });
+      let response = await this.http.post<ResponseTextBot[]>(`${environment.botURL}/webhooks/rest/webhook`, body).toPromise()
+      
+      console.log("data:", response);
+      this.messageResponse = "";
+       
+      response.map(x => this.messageResponse += x.text);
       console.log(response);
       return this.messageResponse;
     } catch (e) {
