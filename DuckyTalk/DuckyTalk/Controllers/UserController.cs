@@ -29,6 +29,7 @@ namespace DuckyTalk.Controllers
             return _service.GetById(id);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public Model.User Insert(Model.UpsertRequests.UserUpsertRequest korisnici)
         {
