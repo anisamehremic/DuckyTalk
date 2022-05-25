@@ -10,6 +10,8 @@ services:
       - ./:/app
     command:
       - run
+      - --cors
+      - "*" 
   botactions:
     build:
       context: .
