@@ -73,6 +73,7 @@ namespace DuckyTalk
             services.AddScoped<IUserInterestService, UserInterestService>();
             services.AddScoped<IUserMessageService, UserMessageService>();
             services.AddScoped<IUserBreakReminderService, UserBreakReminderService>();
+            services.AddScoped<INewsApiService, NewsApiService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

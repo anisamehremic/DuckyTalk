@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DuckyTalk.Integration\DuckyTalk.Integration.csproj" />
     <ProjectReference Include="..\DuckyTalk.Model\DuckyTalk.Model.csproj" />
   </ItemGroup>
 

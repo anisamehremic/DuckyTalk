@@ -5,7 +5,9 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DuckyTalk", "DuckyTalk\DuckyTalk.csproj", "{121679B1-6725-4CB5-AF84-1FAEF810DC7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuckyTalk.Model", "DuckyTalk.Model\DuckyTalk.Model.csproj", "{FBC9D8B3-0E10-4B83-9A56-3B26B6E8C7BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DuckyTalk.Model", "DuckyTalk.Model\DuckyTalk.Model.csproj", "{FBC9D8B3-0E10-4B83-9A56-3B26B6E8C7BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DuckyTalk.Integration", "DuckyTalk.Integration\DuckyTalk.Integration.csproj", "{23238B2C-A4EF-4A8C-B908-0796743D7DD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{FBC9D8B3-0E10-4B83-9A56-3B26B6E8C7BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBC9D8B3-0E10-4B83-9A56-3B26B6E8C7BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBC9D8B3-0E10-4B83-9A56-3B26B6E8C7BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23238B2C-A4EF-4A8C-B908-0796743D7DD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23238B2C-A4EF-4A8C-B908-0796743D7DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23238B2C-A4EF-4A8C-B908-0796743D7DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23238B2C-A4EF-4A8C-B908-0796743D7DD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
