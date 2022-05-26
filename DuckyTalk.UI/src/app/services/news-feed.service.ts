@@ -21,7 +21,7 @@ export class NewsFeedService {
         )
       );
     console.log("user:", user);
-    debugger
+
     const url = `${environment.apiURL}/NewsApi?userId=${user.userId}&Q=${search}`;
     try {
       return this.http
