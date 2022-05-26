@@ -12,7 +12,7 @@ import { UserService } from "./user.service";
 export class NewsFeedService {
   constructor(protected http: HttpClient, protected userService: UserService) {}
 
-  async getAllNews() {
+  async getAllNews(search = '') {
     let user = await this.userService
       .getUsers()
       .then((c) =>
@@ -21,8 +21,8 @@ export class NewsFeedService {
         )
       );
     console.log("user:", user);
-
-    const url = `${environment.apiURL}/NewsApi?userId=${user.userId}`;
+    debugger
+    const url = `${environment.apiURL}/NewsApi?userId=${user.userId}&Q=${search}`;
     try {
       return this.http
         .get<News>(url)

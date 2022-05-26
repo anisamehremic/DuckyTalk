@@ -11,11 +11,21 @@ import { News } from 'src/app/shared/models/news.model';
 export class NewsFeedComponent implements OnInit {
   news: News;
   articles: Article[] = []
+  search; 
 
   constructor(protected newsFeedService: NewsFeedService) { }
 
   async ngOnInit() {
     this.news = await this.newsFeedService.getAllNews();
+    this.articles = this.news.articles;
+  }
+
+  async searchResult() {
+    if (this.search.length > 2) {
+      this.news = await this.newsFeedService.getAllNews(this.search);
+    } else if (this.search == '') {
+      this.news = await this.newsFeedService.getAllNews();
+    }
     this.articles = this.news.articles;
   }
 }

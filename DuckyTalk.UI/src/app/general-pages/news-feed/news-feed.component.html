@@ -1,10 +1,19 @@
-<section class="section gray-bg" id="blog">
+<section class="section" id="blog">
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-lg-7 text-center">
                 <div class="section-title">
                     <h2>Latest News</h2>
                     <p>You can search latest news about your favorites topics... </p>
+                </div>
+                <div class="search-field d-md-block">
+                    <div class="input-group">
+                        <div class="input-group-prepend bg-transparent">
+                            <i class="input-group-text border-0 mdi mdi-magnify"></i>
+                        </div>
+                        <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects"
+                            [(ngModel)]="search" (input)="searchResult()">
+                    </div>
                 </div>
             </div>
         </div>

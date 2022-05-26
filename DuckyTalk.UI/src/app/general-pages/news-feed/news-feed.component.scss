@@ -1,3 +1,4 @@
+@import '../../../styles.scss';
 body {
   margin-top: 20px;
 }
@@ -8,9 +9,7 @@ body {
 .section {
   padding: 100px 0;
   position: relative;
-}
-.gray-bg {
-  background-color: #ebf4fa;
+  background-color: #ffffff;
 }
 /* Blog 
 ---------------------*/
@@ -26,7 +25,7 @@ body {
 }
 .blog-grid .blog-img .date {
   position: absolute;
-  background: #3a3973;
+  background: theme-color(primary);
   color: #ffffff;
   padding: 8px 15px;
   left: 0;
@@ -41,7 +40,7 @@ img {
 .blog-grid .blog-info {
   box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
   border-radius: 5px;
-  background: #ffffff;
+  background: theme-color(light);
   padding: 20px;
   margin: -30px 20px 0;
   position: relative;
@@ -70,7 +69,7 @@ img {
   line-height: 20px;
   position: relative;
   display: inline-block;
-  color: #fe4f6c;
+  color: theme-color(primary);
   -moz-transition: ease all 0.3s;
   -o-transition: ease all 0.3s;
   -webkit-transition: ease all 0.3s;
@@ -109,3 +108,29 @@ img {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+.search-field {
+    .input-group {
+      input {
+        font-size: $default-font-size;
+        padding: 0.5rem;
+        @include input-placeholder {
+          font-size: $navbar-font-size;
+          color: $navbar-menu-color;
+          font-family: $type1-light;
+        }
+      }
+      i {
+        font-size: 17px;
+        margin-right: 0;
+        color: $navbar-menu-color;
+      }
+      .input-group-text {
+        background: transparent;
+      }
+    }
+    .rtl & {
+      @extend .ml-0;
+      @extend .mr-4;
+    }
+  }
