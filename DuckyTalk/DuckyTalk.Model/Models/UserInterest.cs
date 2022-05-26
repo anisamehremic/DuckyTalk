@@ -8,7 +8,7 @@ namespace DuckyTalk.Model
     {
         public int UserInterestId { get; set; }
         public int UserId { get; set; }
-        public string InterestId { get; set; }
-        public bool IsActive { get; set; }
+        public int InterestId { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }
