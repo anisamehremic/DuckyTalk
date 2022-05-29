@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     try {
       await this.userService.login(this.user);
-      this.router.navigate(["/dashboard"]);
+      this.router.navigate(["general-pages/main"]);
     } catch (e) {
       this.isLoading = false;
       console.log("Error login user: ", e);
