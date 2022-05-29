@@ -50,12 +50,12 @@ namespace DuckyTalk.Helpers
             RestResponse response = await client.ExecuteAsync(request);
         }
         public static void EndTimeNotification(DateTime now)
-        { 
-            string msg = "It's time to go home"
+        {
+            string msg = "It's time to go home";
            
             EndTimeNotificationCheckerTask.AddJob(EndTimeNotificationCronJob, () =>
             {
-                Task.Run(() => Notify());
+                Task.Run(() => Notify(msg));
             });
             
             EndTimeNotificationCheckerTask.Start();
