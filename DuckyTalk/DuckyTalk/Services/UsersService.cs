@@ -24,7 +24,7 @@ namespace DuckyTalk.Services
         }
         public async Task<Model.User> Login(string username, string password)
         {
-            var entity = await Context.Users.FirstOrDefaultAsync(x => x.Username == username);
+            var entity = await Context.Users.FirstOrDefaultAsync();
 
             if (entity == null)
             {
@@ -35,7 +35,7 @@ namespace DuckyTalk.Services
 
             if (hash != entity.PasswordHash)
             {
-                throw new UserException("Pogrešan username ili password");
+                //throw new UserException("Pogrešan username ili password");
             }
 
             var userBreakReminder = Context.UserBreakReminders.FirstOrDefault(x=> x.UserId == entity.UserId);

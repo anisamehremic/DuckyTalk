@@ -145,3 +145,16 @@ nlu:
     - i have exception
     - i have some exception
     - there is an error
+
+- intent: code_help_null_reference
+  examples: |
+    - it says something null reference
+    - null reference
+    - NullReferenceException
+    - null exception
+
+- intent: thank_you
+  examples: |
+    - thank you
+    - thnx
+    - thx
