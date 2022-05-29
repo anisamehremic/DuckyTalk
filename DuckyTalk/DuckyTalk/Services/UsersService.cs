@@ -37,6 +37,13 @@ namespace DuckyTalk.Services
                 throw new UserException("Pogrešan username ili password");
             }
 
+            var userBreakReminder = Context.UserBreakReminders.FirstOrDefault(x=> x.UserId == entity.UserId);
+            if (userBreakReminder.BreakNotificationsEnabled)
+                UserBreakReminderHelper.BreakNotification();
+
+            if(userBreakReminder.EndTimeNotificationsEnabled)
+                UserBreakReminderHelper.EndTimeNotification();  
+
             return Mapper.Map<Model.User>(entity);
         }
 

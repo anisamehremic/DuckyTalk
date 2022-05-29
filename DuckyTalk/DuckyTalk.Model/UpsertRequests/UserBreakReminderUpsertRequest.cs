@@ -11,5 +11,7 @@ namespace DuckyTalk.Model.UpsertRequests
         public int UserId { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
+        public bool BreakNotificationsEnabled { get; set; }
+        public bool EndTimeNotificationsEnabled { get; set; }
     }
 }
