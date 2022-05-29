@@ -31,6 +31,11 @@ namespace DuckyTalk.Services
                 search.Q += " OR ";
             
             search.Q += string.Join(" OR ", interests.Select(x => x.Name).ToList()); 
+
+            if (string.IsNullOrEmpty(search.Q))
+            {
+                search.Q = "technology";
+            }
             return await _newsApiIntegration.GetNewsAsync(search);
         }
     }

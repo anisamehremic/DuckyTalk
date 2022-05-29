@@ -9,7 +9,7 @@ namespace DuckyTalk.Integration.Helpers
         public static class NewsApi
         {
             public const string BaseApiAddress = @"https://newsapi.org";
-            public const string ApiKey = "920129c084aa4819a0f0d3487efbe1ae";
+            public const string ApiKey = "b3fd10451b1e46cd971dcf15d4bd9cd7";
 
             public const string EverythingPath = @"/v2/everything";
             public const string TopHeadlinesPath = @"/v2/top-headlines";
