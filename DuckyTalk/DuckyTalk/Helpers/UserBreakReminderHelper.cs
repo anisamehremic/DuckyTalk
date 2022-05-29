@@ -1,17 +1,7 @@
-﻿using RestSharp;
-using System;
-using System.Security.Cryptography;
+﻿using System;
 using System.Text;
-using System.Web;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using System;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -63,33 +53,23 @@ namespace DuckyTalk.Helpers
             string onesignalRestID = "YjU5NWVjYTktNTA5OS00NDE5LWE3NTgtZGMyNzIwYWQ5NTI0";
 
             var request = WebRequest.Create("https://onesignal.com/api/v1/notifications") as HttpWebRequest;
-
             request.KeepAlive = true;
             request.Method = "POST";
             request.ContentType = "application/json; charset=utf-8";
-
             request.Headers.Add("authorization", "Basic " + onesignalRestID);
-
-
-            
-
             var contentsMessage = new { en = msg };
 
 
-            //if using segments
             List<string> segmentsEnum = new List<string>()
-{
-"Subscribed Users"
-};
-
-
+            {
+                "Subscribed Users"
+            };
 
             var obj = new
             {
                 app_id = onesignalAppID,
                 contents = contentsMessage,
-                //filters = filtersEnum, //uncomment if using filters
-                included_segments = segmentsEnum //uncomment if using segments
+                included_segments = segmentsEnum 
             };
 
             var json = JsonConvert.SerializeObject(obj);
