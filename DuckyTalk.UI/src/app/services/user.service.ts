@@ -5,6 +5,7 @@ import { environment } from "src/environments/environment";
 import { Auth } from "../shared/models/auth.model";
 import { User } from "../shared/models/user.model";
 import { map } from "rxjs/operators";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
@@ -14,7 +15,7 @@ export class UserService {
   private userSubject: BehaviorSubject<any>;
   public user: Observable<any>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, protected router: Router) {
     this.userSubject = new BehaviorSubject<any>(
       JSON.parse(localStorage.getItem("user"))
     );
@@ -38,7 +39,7 @@ export class UserService {
   public login(user: Auth): any {
     let authData = window.btoa(user.username + ":" + user.password);
     localStorage.setItem("user", JSON.stringify(authData));
-    localStorage.setItem("username", JSON.stringify(user.username))
+    localStorage.setItem("username", JSON.stringify(user.username));
     this.userSubject.next(authData);
     this.getUsers();
   }
@@ -49,5 +50,13 @@ export class UserService {
     } catch (e) {
       console.log("Method is falling with: ", e.message);
     }
+  }
+
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem("user");
+    localStorage.removeItem("username");
+    this.userSubject.next(null);
+    this.router.navigate(["user-pages/login"]);
   }
 }
