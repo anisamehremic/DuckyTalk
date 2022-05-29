@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   showNavbar = false;
   showFooter = false;
   isLoading = false;
-
+  
   constructor(private router: Router) {
     // Removing Sidebar, Navbar, Footer for Documentation, Error and Auth pages
     router.events.forEach((event) => {

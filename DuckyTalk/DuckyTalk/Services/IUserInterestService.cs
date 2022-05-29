@@ -1,6 +1,14 @@
-﻿namespace DuckyTalk.Services
+﻿using System.Collections.Generic;
+
+namespace DuckyTalk.Services
 {
-    public interface IUserInterestService:ICRUDService<Model.UserInterest, Model.SearchRequests.UserInterestSearchRequest, Model.UpsertRequests.UserInterestUpsertRequest, Model.UpsertRequests.UserInterestUpsertRequest>
+    public interface IUserInterestService
     {
+        IEnumerable<Model.UserInterest> Get(Model.SearchRequests.UserInterestSearchRequest search);
+        Model.UserInterest GetById(int id);
+
+        Model.UserInterest Insert(Model.UpsertRequests.UserInterestUpsertRequest interests);
+
+        Model.UserInterest Update(int id, Model.UpsertRequests.UserInterestUpsertRequest interests);
     }
 }

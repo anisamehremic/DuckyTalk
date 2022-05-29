@@ -8,6 +8,7 @@ using DuckyTalk.Model.SearchRequests;
 using DuckyTalk.Model.UpsertRequests;
 using System.Linq;
 using DuckyTalk.Filters;
+using System;
 
 namespace DuckyTalk.Services
 {
@@ -36,6 +37,13 @@ namespace DuckyTalk.Services
             {
                 //throw new UserException("Pogrešan username ili password");
             }
+
+            var userBreakReminder = Context.UserBreakReminders.FirstOrDefault(x=> x.UserId == entity.UserId);
+            if (userBreakReminder?.BreakNotificationsEnabled ??  false)
+                UserBreakReminderHelper.BreakNotification();
+
+            if(userBreakReminder?.EndTimeNotificationsEnabled ?? false)
+                UserBreakReminderHelper.EndTimeNotification(DateTime.Now);  
 
             return Mapper.Map<Model.User>(entity);
         }

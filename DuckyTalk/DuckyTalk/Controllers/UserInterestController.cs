@@ -8,12 +8,39 @@ namespace DuckyTalk.Controllers
     [ApiController]
     [Route("[controller]")]
 
-    public class UserInterestController : CRUDController<Model.UserInterest, Model.SearchRequests.UserInterestSearchRequest, Model.UpsertRequests.UserInterestUpsertRequest, Model.UpsertRequests.UserInterestUpsertRequest>
-    {
-        private readonly IUserInterestService _userInterestService;
-        public UserInterestController(IUserInterestService service):base(service)
+    public class UserInterestController 
+    { 
+        private readonly IUserInterestService _service;
+        public UserInterestController(IUserInterestService service)
         {
-            _userInterestService = service;
+            _service = service;
+        }
+
+ 
+
+        [HttpGet]
+        public IEnumerable<Model.UserInterest> Get([FromQuery] Model.SearchRequests.UserInterestSearchRequest request)
+        {
+            return _service.Get(request);
+        }
+
+        [HttpGet("{id}")]
+        public Model.UserInterest GetById(int id)
+        {
+            return _service.GetById(id);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public Model.UserInterest Insert(Model.UpsertRequests.UserInterestUpsertRequest interests)
+        {
+            return _service.Insert(interests);
+        }
+
+        [HttpPut("{id}")]
+        public Model.UserInterest Update(int id, [FromBody] Model.UpsertRequests.UserInterestUpsertRequest request)
+        {
+            return _service.Update(id, request);
         }
     }
 }

@@ -12,7 +12,23 @@
   <app-root>
       <div class="main-spinner-wrapper">
         <div class="donut"></div>
+        <div class='onesignal-customlink-container'></div>
       </div>
   </app-root>
+
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  window.OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "12b493b0-41d7-4bb4-8d6b-0d0e0c80f33b",
+      safari_web_id: "",
+      notifyButton: {
+        enable: true,
+      },
+      subdomainName: "ducky",
+    });
+  });
+</script>
 </body>
 </html>
