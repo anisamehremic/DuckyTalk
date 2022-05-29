@@ -39,10 +39,10 @@ namespace DuckyTalk.Services
             }
 
             var userBreakReminder = Context.UserBreakReminders.FirstOrDefault(x=> x.UserId == entity.UserId);
-            if (userBreakReminder.BreakNotificationsEnabled)
+            if (userBreakReminder?.BreakNotificationsEnabled ??  false)
                 UserBreakReminderHelper.BreakNotification();
 
-            if(userBreakReminder.EndTimeNotificationsEnabled)
+            if(userBreakReminder?.EndTimeNotificationsEnabled ?? false)
                 UserBreakReminderHelper.EndTimeNotification(DateTime.Now);  
 
             return Mapper.Map<Model.User>(entity);
