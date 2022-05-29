@@ -18,9 +18,17 @@ namespace DuckyTalk.Integration.Services.NewsApi
             _httpClient = new HttpClient { BaseAddress = new Uri(Constants.NewsApi.BaseApiAddress) };
         }
 
-        public async Task<HttpResponseMessage> Get(string request) 
-        { 
-            return await _httpClient.GetAsync(request);
+        public async Task<HttpResponseMessage> Get(string requestString) 
+        {
+            using (var request = new HttpRequestMessage(HttpMethod.Get, requestString))
+            {
+
+                request.Headers.Add("User-Agent", "Mozilla/5.0");
+                var response = await _httpClient.SendAsync(request);
+
+                return response;
+            }
+            
         }
     }
 }
