@@ -54,7 +54,8 @@ export class AppComponent implements OnInit {
           event.url === '/dashboard' ||
           event.url === '/general-pages/main' ||
           event.url === '/general-pages/news-feed' ||
-          event.url === '/career/main'
+          event.url === '/career/main' ||
+          event.url === '/career/survey'
         ) {
           this.showSidebar = true;
           this.showNavbar = true;

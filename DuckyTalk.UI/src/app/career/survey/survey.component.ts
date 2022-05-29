@@ -4,6 +4,14 @@ import { StylesManager, Model, SurveyNG, Survey } from "survey-angular";
 StylesManager.applyTheme("modern");
 
 const surveyJson = {
+  completedHtml: "<h4>You got <b>{correctAnswers}</b> out of <b>{questionCount}</b> correct answers. Work hard and play hard to get to the next level!</h4>",
+  completedHtmlOnCondition: [{
+    expression: "{correctAnswers} == 0",
+    html: "<h4>Unfortunately, none of your answers are correct. You are not ready for the next level :(</h4>"
+  }, {
+    expression: "{correctAnswers} == {questionCount}",
+    html: "<h4>Congratulations! You are a star! You have what it takes to be at this level!</h4>"
+  }],
   pages: [
     {
       name: 'p1',
@@ -46,6 +54,7 @@ const surveyJson = {
           title: "How well do you work in a team",
           type: "radiogroup",
           isRequired: true,
+          correctAnswer: "1",
           choices: [
             {
               value: "0",
@@ -75,6 +84,7 @@ const surveyJson = {
           title: "Given the opportunity, what you would rather prefer",
           type: "radiogroup",
           isRequired: true,
+          correctAnswer: "2",
           choices: [
             {
               value: "0",
@@ -82,14 +92,10 @@ const surveyJson = {
             },
             {
               value: "1",
-              text: "I get along with [almost] everyone"
-            },
-            {
-              value: "2",
               text: "Work in a team"
             },
             {
-              value: "3",
+              value: "2",
               text: "Work in a team where I have good mentor to guide me to the next level"
             }
           ]
@@ -104,6 +110,7 @@ const surveyJson = {
           title: "When you are given a task and you do not understand it, how do you approach it",
           type: "radiogroup",
           isRequired: true,
+          correctAnswer: "1",
           choices: [
             {
               value: "0",
@@ -133,6 +140,7 @@ const surveyJson = {
           title: "Are you",
           type: "radiogroup",
           isRequired: true,
+          correctAnswer: "2",
           choices: [
             {
               value: "0",
@@ -168,7 +176,7 @@ export class SurveyComponent implements OnInit {
 
   alertResults(sender) {
     const results = JSON.stringify(sender.data);
-    alert(results);
+    // alert(results);
   }
 
   ngOnInit(): void {

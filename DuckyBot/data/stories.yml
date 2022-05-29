@@ -75,3 +75,15 @@ stories:
   steps:
   - intent: tell_dad_joke
   - action: action_tell_dad_joke
+
+
+- story: exception
+  steps:
+  - intent: code_help_start
+  - action: utter_code_exception
+  - intent: affirm
+  - action: utter_code_exception_elaborate
+  - intent: code_help_null_reference
+  - action: utter_code_exception_null
+  - intent: thank_you
+  - action: utter_welcome

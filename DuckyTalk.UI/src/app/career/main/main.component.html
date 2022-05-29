@@ -1,0 +1,55 @@
+<div class="page-header">
+    <h3 class="page-title">
+      Career helper
+    </h3>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Why?</h4>
+          <p class="card-description">
+            More often than not, people doesn't have clear guideline about how to progress with their career.
+            Intention of this tool is to give you a guideline on how do you progress with your career and to track your progress.
+
+            
+            Remember, in software engineering, it's not just about code, to progress, you will have to be good at various fields.
+            
+          <div class="mt-4">
+            <ngb-accordion [closeOthers]="true" activeIds="collapse-1">
+              <ngb-panel id="collapse-1" title="How does it work?">
+                <ng-template ngbPanelContent>
+                  <div class="row">
+                    <div class="col-3">
+                      <img src="assets/images/samples/300x300/10.jpg" class="mw-100"/>                              
+                    </div>
+                    <div class="col-9">
+                      You will be asked a lot of questions, and you will be presented with your result.                          
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-panel>
+              <ngb-panel id="collapse-2" title="How reliable is this?">
+                <ng-template ngbPanelContent>
+                  Since this is not an exact science, we can't guarantee you with 100% accuracy your level, but we do our best to give you the guideline.
+                </ng-template>
+              </ngb-panel>
+              <ngb-panel id="collapse-3" title="If I'm not satisfied with the results, what can I do?">
+                <ng-template ngbPanelContent>
+                  Ask Ducky bot for help :)
+                </ng-template>
+              </ngb-panel>
+            </ngb-accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-6" style="text-align: right;">
+        <a routerLink="/career/survey"><button type="button" class="btn btn-gradient-primary btn-rounded btn-fw">Junior test!</button></a>
+        <a routerLink="/career/survey"><button type="button" class="btn btn-gradient-primary btn-rounded btn-fw">Medior test!</button></a>
+        <a routerLink="/career/survey"><button type="button" class="btn btn-gradient-primary btn-rounded btn-fw">Senior test!</button></a>
+    </div>
+  </div>

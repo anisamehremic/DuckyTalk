@@ -15,6 +15,9 @@ intents:
   - tell_dad_joke
   - tell_joke_what_kind
   - code_help_start
+  - code_help_null_reference
+  - thank_you
+
 
 
 responses:
@@ -63,7 +66,18 @@ responses:
 
   utter_joke:
    - text: Here's something that's popping on my circuits
+  
+  utter_code_exception:
+   - text: Tell me a little bit more about that error. Is it exception?
 
+  utter_code_exception_elaborate:
+   - text: Tell me what does the last line says?
+
+  utter_code_exception_null:
+   - text: If it's about null reference, can you check are you accessing parameters which are not initialized. Ie, customer.name and customer is null
+
+  utter_welcome:
+   - text: Anytime my friend
 
 # responses for general chit chat about technology and showing interests
   
