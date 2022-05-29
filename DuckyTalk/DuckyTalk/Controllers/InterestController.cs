@@ -7,7 +7,6 @@ namespace DuckyTalk.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
 
     public class InterestController : CRUDController<Model.Interest, Model.SearchRequests.InterestSearchRequest, Model.UpsertRequests.InterestUpsertRequest, Model.UpsertRequests.InterestUpsertRequest>
     {
