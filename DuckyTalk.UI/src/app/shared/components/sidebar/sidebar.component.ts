@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,12 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  public uiBasicCollapsed = false;
-  public samplePagesCollapsed = false;
+  userFullName: string
   
-  constructor() { }
+  constructor(protected userService: UserService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    let user = await this.userService
+      .getUsers()
+      .then((c) =>
+        c.find(
+          (x) => x.username === JSON.parse(localStorage.getItem("username")!)
+        )
+      );
+    console.log(user)
+    this.userFullName = `${user.firstName} ${user.lastName}`;
     const body = document.querySelector('body');
 
     // add class 'hover-open' to sidebar navitem while hover in sidebar-icon-only menu
@@ -28,5 +37,4 @@ export class SidebarComponent implements OnInit {
       });
     });
   }
-
 }

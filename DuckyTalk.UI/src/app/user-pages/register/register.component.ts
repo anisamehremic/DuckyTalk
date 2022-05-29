@@ -88,11 +88,13 @@ export class RegisterComponent implements OnInit {
       this.isLoading=true
       await this.userService.registration(this.user);
       console.log('User successfully created: ', this.user.username);
-      // let newUser = await this.userService.getUsers().then(c => c.filter(x => x.username === this.user.username));
-      // this.userInterests.forEach(async interest => {
-      //   await this.interestService.saveUserInterests(newUser.userId, interest.interestId);
-      // });
-      this.router.navigate(['user-pages' , 'login'])
+      await this.userService.login(this.user);
+      console.log('User successfully logged in: ', this.user.username);
+      let newUser = await this.userService.getUsers().then(c => c.find(x => x.username === this.user.username));
+      this.userInterests.forEach(async interestId => {
+        await this.interestService.saveUserInterests(newUser.userId, interestId);
+      });
+      this.router.navigate(['general-pages' , 'main'])
     } catch (e) {
       this.isLoading=false;
       console.log('Error registration user: ', e);
