@@ -37,13 +37,7 @@ export class ChatbotService {
   //   return answer || this.messageMap['defaultmsg'];
   // }
   async getBotMessage(msg: string){
-    let user = await this.userService
-      .getUsers()
-      .then((c) =>
-        c.find(
-          (x) => x.username === JSON.parse(localStorage.getItem("username")!)
-        )
-      );
+    let user = await this.userService.getLoggedUser();
     console.log('userBot', user);
 
     let body = {

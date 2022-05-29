@@ -5,16 +5,17 @@ import { RegisterComponent } from "./register/register.component";
 import { Routes, RouterModule } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { BrowserModule } from "@angular/platform-browser";
-import { SharedModule } from "../shared/shared.module";
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
+  { path: "settings", component: SettingsComponent },
+
 ];
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [LoginComponent, RegisterComponent, SettingsComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,

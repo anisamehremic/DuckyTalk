@@ -12,13 +12,7 @@ export class SidebarComponent implements OnInit {
   constructor(protected userService: UserService) { }
 
   async ngOnInit() {
-    let user = await this.userService
-      .getUsers()
-      .then((c) =>
-        c.find(
-          (x) => x.username === JSON.parse(localStorage.getItem("username")!)
-        )
-      );
+    let user = await this.userService.getLoggedUser();
     console.log(user)
     this.userFullName = `${user.firstName} ${user.lastName}`;
     const body = document.querySelector('body');

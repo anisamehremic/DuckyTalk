@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Interest } from '../shared/models/interest.model';
-import { User } from '../shared/models/user.model';
+import { UserInterests } from '../shared/models/userInterests.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,14 @@ export class InterestService {
 
     try {
       return this.http.post<any>(`${environment.apiURL}/UserInterest`, body).toPromise();
+    } catch (e) {
+      console.log("Method is falling with: ", e.message);
+    }
+  }
+
+  public getUserInterests(userId: number){
+    try {
+      return this.http.get<Array<UserInterests>>(`${environment.apiURL}/UserInterest?userId=${userId}`).toPromise();
     } catch (e) {
       console.log("Method is falling with: ", e.message);
     }

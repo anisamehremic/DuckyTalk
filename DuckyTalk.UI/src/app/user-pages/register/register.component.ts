@@ -33,12 +33,12 @@ export class RegisterComponent implements OnInit {
 
     this.formGroup = this.formBuilder.group({
       firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      lastName: ['', [Validators.required, Validators.minLength(4)]],
       birthday: ['', Validators.required],
       username: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
       interest: ['']
   });
   }
@@ -73,6 +73,10 @@ export class RegisterComponent implements OnInit {
     if (!this.formGroup.valid) {
       return;
     }
+    if(this.userInterests.length == 0){
+      alert('Please, check at least one interest!');
+      return
+    }
     const formValue = this.formGroup.getRawValue();
     this.user = new User({
       firstName: formValue.firstName,
@@ -90,7 +94,7 @@ export class RegisterComponent implements OnInit {
       console.log('User successfully created: ', this.user.username);
       await this.userService.login(this.user);
       console.log('User successfully logged in: ', this.user.username);
-      let newUser = await this.userService.getUsers().then(c => c.find(x => x.username === this.user.username));
+      let newUser = await this.userService.getLoggedUser();
       this.userInterests.forEach(async interestId => {
         await this.interestService.saveUserInterests(newUser.userId, interestId);
       });

@@ -15,12 +15,12 @@
           </div>
         </a>
         <div class="dropdown-menu navbar-dropdown" ngbDropdownMenu aria-labelledby="profileDropdown">
-          <a class="dropdown-item" href="javascript:;">
+          <a class="dropdown-item" routerLink="/user-pages/settings">
             <i class="mdi mdi-account-settings mr-2 text-success"></i>
             Settings
           </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="javascript:;">
+          <a class="dropdown-item" href="javascript:;" (click)="logout()">
             <i class="mdi mdi-logout mr-2 text-primary"></i>
             Sign out
           </a>

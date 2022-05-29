@@ -12,14 +12,8 @@ import { UserService } from "./user.service";
 export class NewsFeedService {
   constructor(protected http: HttpClient, protected userService: UserService) {}
 
-  async getAllNews(search = '') {
-    let user = await this.userService
-      .getUsers()
-      .then((c) =>
-        c.find(
-          (x) => x.username === JSON.parse(localStorage.getItem("username")!)
-        )
-      );
+  async getAllNews(search = "") {
+    let user = await this.userService.getLoggedUser();
     console.log("user:", user);
 
     const url = `${environment.apiURL}/NewsApi?userId=${user.userId}&Q=${search}`;

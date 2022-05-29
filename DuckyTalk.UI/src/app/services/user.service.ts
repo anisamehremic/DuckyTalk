@@ -53,10 +53,27 @@ export class UserService {
   }
 
   logout() {
-    // remove user from local storage to log user out
     localStorage.removeItem("user");
     localStorage.removeItem("username");
     this.userSubject.next(null);
     this.router.navigate(["user-pages/login"]);
+  }
+
+  getLoggedUser() {
+    return this.getUsers().then((c) =>
+      c.find(
+        (x) => x.username === JSON.parse(localStorage.getItem("username")!)
+      )
+    );
+  }
+
+  updateUser(userId: number, editUser: object){
+    try {
+      return this.http
+        .put<any>(`${environment.apiURL}/User/${userId}`, editUser)
+        .toPromise();
+    } catch (e) {
+      console.log("Method is falling with: ", e.message);
+    }
   }
 }
