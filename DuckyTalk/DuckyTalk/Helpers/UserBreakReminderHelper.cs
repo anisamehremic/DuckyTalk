@@ -19,14 +19,15 @@ namespace DuckyTalk.Helpers
 
         public static void BreakNotification()
         {
+            string msg = "It's break time";
            
             BreakNotificationCheckerTask.AddJob(BreakNotificationCronJob, () =>
             {
-                Task.Run(() => Notify());
+                Task.Run(() => Notify(msg));
             });
             BreakNotificationCheckerTask.Start();
         }
-        public async static void Notify()
+        public async static void Notify(string msg)
         {
             var client = new RestClient("https://onesignal.com/api/v1/notifications");
 
@@ -38,7 +39,7 @@ namespace DuckyTalk.Helpers
             Newtonsoft.Json.Linq.JObject _meetingRequestJson = new Newtonsoft.Json.Linq.JObject();
             _meetingRequestJson.Add(new Newtonsoft.Json.Linq.JProperty("app_id", "12b493b0-41d7-4bb4-8d6b-0d0e0c80f33b"));
             _meetingRequestJson.Add(new Newtonsoft.Json.Linq.JProperty("included_segments", "Subscribed Users"));
-            _meetingRequestJson.Add(new Newtonsoft.Json.Linq.JProperty("contents", "en"));
+            _meetingRequestJson.Add(new Newtonsoft.Json.Linq.JProperty("contents", "\"en\":\"{msg}\""));
             _meetingRequestJson.Add(new Newtonsoft.Json.Linq.JProperty("name", "duckytalk"));
             string gtmJSON = Newtonsoft.Json.JsonConvert.SerializeObject(_meetingRequestJson);
             
@@ -48,21 +49,13 @@ namespace DuckyTalk.Helpers
 
             RestResponse response = await client.ExecuteAsync(request);
         }
-        public static void EndTimeNotification()
-        {
-            var client = new RestClient("https://onesignal.com/api/v1/notifications");
-
-            var request = new RestRequest("*/*", Method.Post);
-
-
-            request.AddHeader("Accept", "application/json");
-            request.AddHeader("Authorization", "Basic YjU5NWVjYTktNTA5OS00NDE5LWE3NTgtZGMyNzIwYWQ5NTI0"); 
-            request.AddHeader("Content-Type", "application/json");
-            request.AddParameter("application/json", "{\"app_id\":\"12b493b0-41d7-4bb4-8d6b-0d0e0c80f33b\",\"included_segments\":\"Subscribed Users\",\"external_id\":\"push\",\"contents\":[{\"en\":\"It is time to go home.\"}],\"name\":\"INTERNAL_CAMPAIGN_NAME\",}", ParameterType.RequestBody);
+        public static void EndTimeNotification(DateTime now)
+        { 
+            string msg = "It's time to go home"
            
             EndTimeNotificationCheckerTask.AddJob(EndTimeNotificationCronJob, () =>
             {
-              Task.FromResult(client.ExecuteAsync(request));
+                Task.Run(() => Notify());
             });
             
             EndTimeNotificationCheckerTask.Start();

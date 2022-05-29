@@ -8,6 +8,7 @@ using DuckyTalk.Model.SearchRequests;
 using DuckyTalk.Model.UpsertRequests;
 using System.Linq;
 using DuckyTalk.Filters;
+using System;
 
 namespace DuckyTalk.Services
 {
@@ -42,7 +43,7 @@ namespace DuckyTalk.Services
                 UserBreakReminderHelper.BreakNotification();
 
             if(userBreakReminder.EndTimeNotificationsEnabled)
-                UserBreakReminderHelper.EndTimeNotification();  
+                UserBreakReminderHelper.EndTimeNotification(DateTime.Now);  
 
             return Mapper.Map<Model.User>(entity);
         }
