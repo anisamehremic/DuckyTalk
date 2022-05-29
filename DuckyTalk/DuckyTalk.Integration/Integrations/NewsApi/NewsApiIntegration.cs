@@ -47,9 +47,9 @@ namespace DuckyTalk.Integration.Integrations.NewsApi
                 if (!string.IsNullOrEmpty((request as EverythingRequest).SearchIn))
                     apiMethods.Add($"country={(request as EverythingRequest).SearchIn}");
                 if (!string.IsNullOrEmpty((request as EverythingRequest).Domains))
-                    apiMethods.Add($"category={(request as EverythingRequest).Domains}");
+                    apiMethods.Add($"domains={(request as EverythingRequest).Domains}");
                 if (!string.IsNullOrEmpty((request as EverythingRequest).ExcludeDomains))
-                    apiMethods.Add($"category={(request as EverythingRequest).ExcludeDomains}");
+                    apiMethods.Add($"excludeDomains={(request as EverythingRequest).ExcludeDomains}");
                 if ((request as EverythingRequest).From != null)
                     apiMethods.Add($"from={(request as EverythingRequest).From.Value.ToString("yyyy-MM-dd")}");
                 if ((request as EverythingRequest).To != null)
