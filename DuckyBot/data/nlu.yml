@@ -150,11 +150,22 @@ nlu:
   examples: |
     - it says something null reference
     - null reference
-    - NullReferenceException
     - null exception
+    - something about null reference
+    - about null reference
+
 
 - intent: thank_you
   examples: |
     - thank you
     - thnx
     - thx
+
+
+- intent: career_improve
+  examples: |
+    - improve career
+    - how can I improve career
+    - how to advance carrer
+    - advance career
+    - career

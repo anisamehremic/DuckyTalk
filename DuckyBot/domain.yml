@@ -17,6 +17,7 @@ intents:
   - code_help_start
   - code_help_null_reference
   - thank_you
+  - career_improve
 
 
 
@@ -78,6 +79,9 @@ responses:
 
   utter_welcome:
    - text: Anytime my friend
+
+  utter_career_improve:
+   - text: For start, take my questionnaire and let's see your current level, let's take it from there
 
 # responses for general chit chat about technology and showing interests
   

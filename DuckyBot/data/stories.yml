@@ -87,3 +87,8 @@ stories:
   - action: utter_code_exception_null
   - intent: thank_you
   - action: utter_welcome
+
+- story: career
+  steps:
+  - intent: career_improve
+  - action: utter_career_improve
