@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuckyTalk.Migrations
 {
     [DbContext(typeof(DuckyTalkContext))]
-    [Migration("20220528165051_UserBreakReminder")]
-    partial class UserBreakReminder
+    [Migration("20220601233748_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,14 +45,32 @@ namespace DuckyTalk.Migrations
                         new
                         {
                             InterestId = 1,
-                            Description = "Rock music",
-                            Name = "Music"
+                            Description = "Inovations in tech world.",
+                            Name = "Inovations"
                         },
                         new
                         {
                             InterestId = 2,
-                            Description = "Comedy",
-                            Name = "Movies"
+                            Description = "Inovations in game development.",
+                            Name = "Gaming"
+                        },
+                        new
+                        {
+                            InterestId = 3,
+                            Description = "Cyber secyurit, crypthography, data privacy",
+                            Name = "Security"
+                        },
+                        new
+                        {
+                            InterestId = 4,
+                            Description = "Deep learning, machine learning, data analysis",
+                            Name = "Data Science"
+                        },
+                        new
+                        {
+                            InterestId = 5,
+                            Description = "Robotics, bluetooth, iot",
+                            Name = "Hardware"
                         });
                 });
 
@@ -125,6 +143,48 @@ namespace DuckyTalk.Migrations
                             Description = "Java is an object-oriented programming language that produces software for multiple platforms.",
                             IsDeleted = false,
                             Name = "Java"
+                        },
+                        new
+                        {
+                            TechnologyId = 4,
+                            Description = "C# is an object-oriented programming language from Microsoft.",
+                            IsDeleted = false,
+                            Name = "C#"
+                        },
+                        new
+                        {
+                            TechnologyId = 5,
+                            Description = "C++ is a general-purpose programming language which is an extension of the C programming language.",
+                            IsDeleted = false,
+                            Name = "C++"
+                        },
+                        new
+                        {
+                            TechnologyId = 6,
+                            Description = "PHP is a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML.",
+                            IsDeleted = false,
+                            Name = "PHP"
+                        },
+                        new
+                        {
+                            TechnologyId = 7,
+                            Description = "Java Script is an object-oriented computer programming language commonly used to create interactive effects within web browsers.",
+                            IsDeleted = false,
+                            Name = "Java Script"
+                        },
+                        new
+                        {
+                            TechnologyId = 8,
+                            Description = "Angular is a development platform, built on TypeScript",
+                            IsDeleted = false,
+                            Name = "Angular"
+                        },
+                        new
+                        {
+                            TechnologyId = 9,
+                            Description = "Python is a high-level general-purpose programming language.",
+                            IsDeleted = false,
+                            Name = "Python"
                         });
                 });
 
@@ -195,6 +255,28 @@ namespace DuckyTalk.Migrations
                             PasswordHash = "+WQk9mVupe+VOTeMI1a8PsyMmR0=",
                             PasswordSalt = "cPYUsauMRpahKHypOM3BIA==",
                             Username = "lejlam"
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            BirthDate = new DateTime(1998, 6, 2, 11, 55, 58, 693, DateTimeKind.Local),
+                            Email = "ilma.kazazic@edu.fit.ba",
+                            FirstName = "Ilma",
+                            LastName = "Kazazić",
+                            PasswordHash = "+WQk9mVupe+VOTeMI1a8PsyMmR0=",
+                            PasswordSalt = "cPYUsauMRpahKHypOM3BIA==",
+                            Username = "ilmak"
+                        },
+                        new
+                        {
+                            UserId = 4,
+                            BirthDate = new DateTime(1990, 7, 5, 5, 35, 58, 693, DateTimeKind.Local),
+                            Email = "amel.music@edu.fit.ba",
+                            FirstName = "Amel",
+                            LastName = "Musić",
+                            PasswordHash = "+WQk9mVupe+VOTeMI1a8PsyMmR0=",
+                            PasswordSalt = "cPYUsauMRpahKHypOM3BIA==",
+                            Username = "amelm"
                         });
                 });
 
@@ -225,6 +307,44 @@ namespace DuckyTalk.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserBreakReminder");
+
+                    b.HasData(
+                        new
+                        {
+                            UserBreakReminderId = 1,
+                            BreakNotificationsEnabled = true,
+                            EndTime = new DateTime(2022, 1, 6, 16, 0, 0, 0, DateTimeKind.Local),
+                            EndTimeNotificationsEnabled = false,
+                            StartTime = new DateTime(2022, 1, 6, 8, 0, 0, 0, DateTimeKind.Local),
+                            UserId = 1
+                        },
+                        new
+                        {
+                            UserBreakReminderId = 2,
+                            BreakNotificationsEnabled = false,
+                            EndTime = new DateTime(2022, 1, 6, 15, 0, 0, 0, DateTimeKind.Local),
+                            EndTimeNotificationsEnabled = true,
+                            StartTime = new DateTime(2022, 1, 6, 7, 0, 0, 0, DateTimeKind.Local),
+                            UserId = 2
+                        },
+                        new
+                        {
+                            UserBreakReminderId = 3,
+                            BreakNotificationsEnabled = true,
+                            EndTime = new DateTime(2022, 1, 6, 17, 0, 0, 0, DateTimeKind.Local),
+                            EndTimeNotificationsEnabled = true,
+                            StartTime = new DateTime(2022, 1, 6, 9, 0, 0, 0, DateTimeKind.Local),
+                            UserId = 3
+                        },
+                        new
+                        {
+                            UserBreakReminderId = 4,
+                            BreakNotificationsEnabled = false,
+                            EndTime = new DateTime(2022, 1, 6, 16, 0, 0, 0, DateTimeKind.Local),
+                            EndTimeNotificationsEnabled = false,
+                            StartTime = new DateTime(2022, 1, 6, 8, 0, 0, 0, DateTimeKind.Local),
+                            UserId = 4
+                        });
                 });
 
             modelBuilder.Entity("DuckyTalk.Database.UserInterest", b =>
@@ -250,6 +370,78 @@ namespace DuckyTalk.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserInterest");
+
+                    b.HasData(
+                        new
+                        {
+                            UserInterestId = 1,
+                            InterestId = 4,
+                            IsDeleted = false,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            UserInterestId = 2,
+                            InterestId = 2,
+                            IsDeleted = false,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            UserInterestId = 3,
+                            InterestId = 2,
+                            IsDeleted = false,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            UserInterestId = 4,
+                            InterestId = 1,
+                            IsDeleted = false,
+                            UserId = 4
+                        },
+                        new
+                        {
+                            UserInterestId = 5,
+                            InterestId = 3,
+                            IsDeleted = false,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            UserInterestId = 6,
+                            InterestId = 3,
+                            IsDeleted = false,
+                            UserId = 4
+                        },
+                        new
+                        {
+                            UserInterestId = 7,
+                            InterestId = 5,
+                            IsDeleted = false,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            UserInterestId = 8,
+                            InterestId = 5,
+                            IsDeleted = false,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            UserInterestId = 9,
+                            InterestId = 1,
+                            IsDeleted = false,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            UserInterestId = 10,
+                            InterestId = 5,
+                            IsDeleted = false,
+                            UserId = 1
+                        });
                 });
 
             modelBuilder.Entity("DuckyTalk.Database.UserMessage", b =>
@@ -316,15 +508,99 @@ namespace DuckyTalk.Migrations
                         {
                             UserTechnologyId = 2,
                             IsDeleted = false,
-                            TechnologyId = 1,
+                            TechnologyId = 2,
                             UserId = 2
                         },
                         new
                         {
                             UserTechnologyId = 3,
                             IsDeleted = false,
-                            TechnologyId = 2,
+                            TechnologyId = 7,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            UserTechnologyId = 4,
+                            IsDeleted = false,
+                            TechnologyId = 3,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            UserTechnologyId = 5,
+                            IsDeleted = false,
+                            TechnologyId = 1,
+                            UserId = 4
+                        },
+                        new
+                        {
+                            UserTechnologyId = 6,
+                            IsDeleted = false,
+                            TechnologyId = 5,
+                            UserId = 4
+                        },
+                        new
+                        {
+                            UserTechnologyId = 7,
+                            IsDeleted = false,
+                            TechnologyId = 6,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            UserTechnologyId = 8,
+                            IsDeleted = false,
+                            TechnologyId = 7,
                             UserId = 1
+                        },
+                        new
+                        {
+                            UserTechnologyId = 9,
+                            IsDeleted = false,
+                            TechnologyId = 8,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            UserTechnologyId = 10,
+                            IsDeleted = false,
+                            TechnologyId = 9,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            UserTechnologyId = 11,
+                            IsDeleted = false,
+                            TechnologyId = 8,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            UserTechnologyId = 12,
+                            IsDeleted = false,
+                            TechnologyId = 7,
+                            UserId = 4
+                        },
+                        new
+                        {
+                            UserTechnologyId = 13,
+                            IsDeleted = false,
+                            TechnologyId = 5,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            UserTechnologyId = 14,
+                            IsDeleted = false,
+                            TechnologyId = 4,
+                            UserId = 4
+                        },
+                        new
+                        {
+                            UserTechnologyId = 15,
+                            IsDeleted = false,
+                            TechnologyId = 7,
+                            UserId = 3
                         });
                 });
 
